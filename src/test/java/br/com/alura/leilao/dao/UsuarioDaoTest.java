@@ -35,19 +35,27 @@ class UsuarioDaoTest {
 	void deveriaEncontrarUmUsuarioCadastrado() {
 		criarUsuario();
 
-		Usuario encontrado = this.dao.buscarPorUsername(usuario.getNome());
+		Usuario encontrado = this.dao.buscarPorUsername(this.usuario.getNome());
 		Assert.assertNotNull(encontrado);
 	}
 
 	@Test
 	void naoDeveriaEncontrarUmUsuarioNaoCadastrado() {
-		criarUsuario();
+		this.criarUsuario();
 
 		Assert.assertThrows(NoResultException.class, () -> this.dao.buscarPorUsername("Beltrano"));
 	}
 
+	@Test
+	void deveriaRemoverUmUsuario(){
+		this.criarUsuario();
+		this.dao.deletar(this.usuario);
+
+		Assert.assertThrows(NoResultException.class, () -> this.dao.buscarPorUsername(this.usuario.getNome()));
+	}
+
 	private void criarUsuario() {
 		this.usuario = new Usuario("fulano", "fulano@email.com", "12345678");
-		em.persist(usuario);
+		em.persist(this.usuario);
 	}
 }
