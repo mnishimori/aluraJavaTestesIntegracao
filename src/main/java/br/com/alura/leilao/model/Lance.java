@@ -47,6 +47,11 @@ public class Lance {
 		this.data = LocalDate.now();
 	}
 
+	public Lance(Leilao leilao, Usuario usuario, BigDecimal valor) {
+		this(usuario, valor);
+		this.leilao = leilao;
+	}
+
 	public Lance(@NotNull @DecimalMin("0.1") BigDecimal valor) {
 		this.valor = valor;
 	}

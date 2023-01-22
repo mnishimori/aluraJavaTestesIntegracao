@@ -60,22 +60,6 @@ class LeilaoDaoTest {
         assertEquals(new BigDecimal("50.00"), leilaoSalvo.getValorInicial());
     }
 
-    @Test
-    void buscarPorId() {
-    }
-
-    @Test
-    void buscarTodos() {
-    }
-
-    @Test
-    void buscarLeiloesDoPeriodo() {
-    }
-
-    @Test
-    void buscarLeiloesDoUsuario() {
-    }
-
     private Usuario criarUsuario() {
         Usuario usuario = new Usuario("fulano", "fulano@email.com", "12345678");
         em.persist(usuario);
